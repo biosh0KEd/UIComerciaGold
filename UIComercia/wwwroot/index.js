@@ -1,3 +1,4 @@
-﻿window. Alert = function (message) {
-	alert("Tocando el resizer");
+﻿function getResizerLeft() {
+	var resizer = document.getElementById("cursorX").value
+	return resizer
 }
