@@ -14,6 +14,18 @@
 .rc-resizercontent:hover {
     cursor: col-resize;
 }
+
+.rc-pestana {
+    width: 200px;
+    text-decoration: none;
+    color: #000000;
+    background-color: #FFD700;
+    padding: 4px;
+    font-size: 16px;
+    border-radius: 4px 4px 0% 0%;
+    margin-right: 3px;
+    text-align: center;
+}
 /*_____________________________________________*/
 .page {
     position: relative;
@@ -29,29 +41,14 @@ main {
     /*border-right: solid #FFD700;*/
 }
 
-.top-row {
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #d6d5d5;
-    justify-content: flex-end;
-    height: 3.5rem;
-    display: flex;
-    align-items: center;
+.top-row {       
+    height: 2.13rem;        
+    border-bottom: solid 2px #FFD700;
+    display: grid;    
+    grid-auto-flow: column;    
+    grid-auto-columns: max-content;
 }
-
-    .top-row ::deep a, .top-row ::deep .btn-link {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-        text-decoration: none;
-    }
-
-    .top-row ::deep a:hover, .top-row ::deep .btn-link:hover {
-        text-decoration: underline;
-    }
-
-    .top-row ::deep a:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+    
 
 @media (max-width: 640.98px) {
     .top-row:not(.auth) {
@@ -90,9 +87,5 @@ main {
         text-align: right;
         width: 0;
     }
-
-    .top-row, article {
-        padding-left: 2rem !important;
-        padding-right: 1.5rem !important;
-    }
+    
 }

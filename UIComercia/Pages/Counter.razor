@@ -1,4 +1,5 @@
 ﻿@page "/counter"
+@inject PaginaActual paginaActual
 
 <PageTitle>Counter</PageTitle>
 
@@ -14,5 +15,11 @@
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    protected override void OnInitialized()
+    {
+        paginaActual.SetNombrePaginaActual("Counter");
+        base.OnInitialized();
     }
 }

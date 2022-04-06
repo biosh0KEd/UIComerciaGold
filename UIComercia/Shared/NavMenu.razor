@@ -1,45 +1,221 @@
-﻿<div class="top-row ps-3 navbar navbar-light">
+﻿@inject PaginaActual paginaActual
+
+<div class="top-row ps-3 navbar navbar-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="">Menú</a>
 
-        <button type="button" title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>    
     <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">        
+        <input class="form-control me-2 rc-serchnav" type="search" placeholder="Search" aria-label="Search">        
     </form>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+<div class="@NavMenuCssClass">
     <nav class="flex-column">
         <ul class="navbar-nav">
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="">
-                    <span class="oi oi-folder" aria-hidden="true"></span> Home
-                </NavLink>
+            <li class="px-3">
+                <div class="rc-folder" @onclick="ToggleNavVentas">
+                    <span class="oi oi-plus"></span>
+                    <span class="oi oi-folder" aria-hidden="true"></span> Ventas
+                </div>      
+                <div class="@navVentas">
+                    <ul class="navbar-nav">
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Presupuestos
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Pedidos
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Apartados
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Consignaciones
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Notas de Venta
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Devoluciones
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Reparaciones
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Pagos o Abonos Clientes
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div>      
+                                <span style="width:1rem"></span>
+                                <span class="oi oi-document" aria-hidden="true"></span> Reembolsos Clientes
+                                <span class="oi oi-plus"></span>
+                            </div>                            
+                        </li>
+                        <li class="px-3">
+                            <div>          
+                                <span style="width:1rem"></span>
+                                <span class="oi oi-document" aria-hidden="true"></span> Ajustes Cargos
+                                <span class="oi oi-plus"></span>
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div>    
+                                <span style="width:1rem"></span>
+                                <span class="oi oi-document" aria-hidden="true"></span> Ajustes Abonos
+                                <span class="oi oi-plus"></span>
+                            </div>                            
+                        </li>
+                        <li class="px-3">
+                            <div>      
+                                <span style="width:1rem"></span>
+                                <span class="oi oi-document" aria-hidden="true"></span> Facturas
+                                <span class="oi oi-plus"></span>
+                            </div>                            
+                        </li>
+                        <li class="px-3">
+                            <div>                                
+                                <span style="width:1rem"></span>
+                                <span class="oi oi-document" aria-hidden="true"></span> Notas de Crédito
+                                <span class="oi oi-plus"></span>
+                            </div>                            
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Estadísticas Ventas
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">                                
+                                <span style="width:1rem"></span>
+                                <span class="oi oi-document" aria-hidden="true"></span> Reportes Ventas
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">                               
+                                <span style="width:1rem"></span>
+                                <span class="oi oi-document" aria-hidden="true"></span> Consulta Precios
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="counter">
-                    <span class="oi oi-folder" aria-hidden="true"></span> Counter
-                </NavLink>
+            <li class="px-3">
+                <div class="rc-folder">
+                    <span class="oi oi-plus"></span>
+                    <span class="oi oi-folder" aria-hidden="true"></span> Compras
+                </div>
             </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="fetchdata">
-                    <span class="oi oi-document" aria-hidden="true"></span> Fetch data
-                </NavLink>
+            <li class="px-3">
+                <div class="rc-folder">
+                    <span class="oi oi-plus"></span>
+                    <span class="oi oi-folder" aria-hidden="true"></span> Inventarios
+                </div>
+            </li>
+            <li class="px-3">
+                <div class="rc-folder">
+                    <span class="oi oi-plus"></span>
+                    <span class="oi oi-folder" aria-hidden="true"></span> Finanzas
+                </div>
+            </li>
+            <li class="px-3">
+                <div class="rc-folder">
+                    <span class="oi oi-plus"></span>
+                    <span class="oi oi-folder" aria-hidden="true"></span> Datos
+                </div>
+            </li>
+            <li class="px-3">
+                <div class="rc-folder">
+                    <span class="oi oi-plus"></span>
+                    <span class="oi oi-folder" aria-hidden="true"></span> Consultas
+                </div>
+            </li>
+            <li class="px-3">
+                <div class="rc-folder">
+                    <span class="oi oi-plus"></span>
+                    <span class="oi oi-folder" aria-hidden="true"></span> eCommerce
+                </div>
+            </li>
+            <li class="px-3">
+                <div class="rc-document" @onclick="(() => setCounter(counter))">
+                    <span class="oi oi-document" aria-hidden="true"></span> Consola de Administación
+                </div>
+            </li>
+            <li class="px-3">
+                <div class="rc-document" @onclick="(() => setCounter(home))">                    
+                    <span class="oi oi-document" aria-hidden="true"></span> Soporte
+                </div>
+            </li>
+            <li class="px-3">
+                <div class="rc-document">                    
+                    <span class="oi oi-document" aria-hidden="true"></span> Novedades
+                </div>
+            </li>
+            <li class="px-3">
+                <div class="rc-document">                    
+                    <span class="oi oi-document" aria-hidden="true"></span> Cambiar Contraseña
+                </div>
+            </li>
+            <li class="px-3">
+                <div class="rc-document">                   
+                    <span class="oi oi-document" aria-hidden="true"></span> Guía de Uso
+                </div>
+            </li>
+            <li class="px-3">
+                <div class="rc-document">                    
+                    <span class="oi oi-document" aria-hidden="true"></span> Mi Sesión
+                </div>
             </li>
         </ul>        
     </nav>
 </div>
 
 @code {
-    private bool collapseNavMenu = true;
+    public static string counter = "Counter";
+    public static string home = "Home";
+
+    private bool collapseNavMenu = true, collapseNavVentas = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private string? navVentas => collapseNavVentas ? "collapse" : null;
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
     }
+
+    private void ToggleNavVentas()
+    {
+        collapseNavVentas = !collapseNavVentas;
+    }
+
+    private void setCounter(string name) => paginaActual.SetNombrePaginaActual(name);
 }

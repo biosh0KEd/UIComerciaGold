@@ -1,5 +1,6 @@
 ﻿@inherits LayoutComponentBase
 @inject IJSRuntime JsRuntime
+@inject PaginaActual paginaActual
 
 <div class ="rc-header"> 
         <img class="rc-logo" src="images/ComerciaGoldLogo.PNG" alt="Logo"/>
@@ -11,31 +12,30 @@
 
 <div class="page">       
     <div class="sidebar">
-        <NavMenu />
+        <NavMenu/>
     </div>
-    <div id="resizer" class="rc-resizercontent" @onclick="Resize"></div>
+    <div id="resizer" class="rc-resizercontent"></div> <!--onclick="Resize"-->
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        <div class="top-row">                                    
+            @if (paginaActual.NombrePaginaActual != null)
+            {
+                <a class="rc-pestana" href="@paginaActual.NombrePaginaActual" target="_blank">@paginaActual.NombrePaginaActual</a>
+            }
         </div>
 
         <article class="content px-4">
-            @Body
+            <DynamicComponent Type="paginaActual.TypePaginaActual"/>
         </article>
     </main>
 </div>
-<div>
-    <p>@left</p>
-    <p>@top</p>
-</div>
 
-@code {
-    public int left = 0;
-    public int top = 0;
+@code {    
+    protected override void OnInitialized()
+    {                
+        // if the OnChange event is raised, refresh this view
+        paginaActual.OnChange += () => StateHasChanged();
+        
 
-    private async Task Resize() {
-        await JsRuntime.InvokeVoidAsync("alert", "Click en el resizer.");        
-        left = await JsRuntime.InvokeAsync<int>("getResizerLeft");
-        top = await JsRuntime.InvokeAsync<int>("getResizerTop");
+        base.OnInitialized();
     }
 }
