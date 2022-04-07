@@ -1,4 +1,5 @@
 ﻿@inject PaginaActual paginaActual
+@inject PaginasAbiertas paginasAbiertas
 
 <div class="top-row ps-3 navbar navbar-light">
     <div class="container-fluid">
@@ -72,56 +73,63 @@
                             </div>
                         </li>
                         <li class="px-3">
-                            <div>      
-                                <span style="width:1rem"></span>
-                                <span class="oi oi-document" aria-hidden="true"></span> Reembolsos Clientes
+                            <div class="rc-document">  
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Reembolsos Clientes
+                                </div>                                
                                 <span class="oi oi-plus"></span>
                             </div>                            
                         </li>
                         <li class="px-3">
-                            <div>          
-                                <span style="width:1rem"></span>
-                                <span class="oi oi-document" aria-hidden="true"></span> Ajustes Cargos
+                            <div class="rc-document">                                          
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Ajustes Cargos
+                                </div>                                
                                 <span class="oi oi-plus"></span>
                             </div>
                         </li>
                         <li class="px-3">
-                            <div>    
-                                <span style="width:1rem"></span>
-                                <span class="oi oi-document" aria-hidden="true"></span> Ajustes Abonos
+                            <div class="rc-document">                                    
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Ajustes Abonos
+                                </div>
                                 <span class="oi oi-plus"></span>
                             </div>                            
                         </li>
                         <li class="px-3">
-                            <div>      
-                                <span style="width:1rem"></span>
-                                <span class="oi oi-document" aria-hidden="true"></span> Facturas
+                            <div class="rc-document">        
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Facturas
+                                </div>                                
                                 <span class="oi oi-plus"></span>
                             </div>                            
                         </li>
                         <li class="px-3">
-                            <div>                                
-                                <span style="width:1rem"></span>
-                                <span class="oi oi-document" aria-hidden="true"></span> Notas de Crédito
+                            <div class="rc-document">                                                                
+                                <div>
+                                   <span class="oi oi-document" aria-hidden="true"></span> Notas de Crédito
+                                </div>                                
                                 <span class="oi oi-plus"></span>
                             </div>                            
                         </li>
                         <li class="px-3">
-                            <div class="rc-folder">
+                            <div class="rc-folder">  
                                 <span class="oi oi-plus"></span>
                                 <span class="oi oi-folder" aria-hidden="true"></span> Estadísticas Ventas
                             </div>
                         </li>
                         <li class="px-3">
-                            <div class="rc-folder">                                
-                                <span style="width:1rem"></span>
-                                <span class="oi oi-document" aria-hidden="true"></span> Reportes Ventas
+                            <div class="rc-document"> 
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Reportes Ventas
+                                </div>                                
                             </div>
                         </li>
                         <li class="px-3">
-                            <div class="rc-folder">                               
-                                <span style="width:1rem"></span>
-                                <span class="oi oi-document" aria-hidden="true"></span> Consulta Precios
+                            <div class="rc-document">                                                               
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Consulta Precios
+                                </div>                                
                             </div>
                         </li>
                     </ul>
@@ -165,32 +173,44 @@
             </li>
             <li class="px-3">
                 <div class="rc-document" @onclick="(() => setCounter(counter))">
-                    <span class="oi oi-document" aria-hidden="true"></span> Consola de Administación
+                    <div>
+                        <span class="oi oi-document" aria-hidden="true"></span> Consola de Administación
+                    </div>                    
                 </div>
             </li>
             <li class="px-3">
                 <div class="rc-document" @onclick="(() => setCounter(home))">                    
-                    <span class="oi oi-document" aria-hidden="true"></span> Soporte
+                    <div>
+                        <span class="oi oi-document" aria-hidden="true"></span> Soporte
+                    </div>                    
                 </div>
             </li>
             <li class="px-3">
                 <div class="rc-document">                    
-                    <span class="oi oi-document" aria-hidden="true"></span> Novedades
+                    <div>
+                        <span class="oi oi-document" aria-hidden="true"></span> Novedades
+                    </div>                    
                 </div>
             </li>
             <li class="px-3">
-                <div class="rc-document">                    
-                    <span class="oi oi-document" aria-hidden="true"></span> Cambiar Contraseña
+                <div class="rc-document">       
+                    <div>
+                       <span class="oi oi-document" aria-hidden="true"></span> Cambiar Contraseña
+                    </div>                    
                 </div>
             </li>
             <li class="px-3">
-                <div class="rc-document">                   
-                    <span class="oi oi-document" aria-hidden="true"></span> Guía de Uso
+                <div class="rc-document">                 
+                    <div>
+                        <span class="oi oi-document" aria-hidden="true"></span> Guía de Uso
+                    </div>                    
                 </div>
             </li>
             <li class="px-3">
-                <div class="rc-document">                    
-                    <span class="oi oi-document" aria-hidden="true"></span> Mi Sesión
+                <div class="rc-document">  
+                    <div>
+                        <span class="oi oi-document" aria-hidden="true"></span> Mi Sesión
+                    </div>                    
                 </div>
             </li>
         </ul>        
@@ -217,5 +237,9 @@
         collapseNavVentas = !collapseNavVentas;
     }
 
-    private void setCounter(string name) => paginaActual.SetNombrePaginaActual(name);
+    private void setCounter(string name) 
+    {
+        paginaActual.CrearNuevaPagina(name);
+        paginasAbiertas.Paginas.Add(paginaActual.GetPagina());
+    }
 }

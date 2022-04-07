@@ -16,6 +16,12 @@
 .rc-document {
     padding-left: 1rem;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rc-document .io-plus {
+    float: right;
 }
 
 

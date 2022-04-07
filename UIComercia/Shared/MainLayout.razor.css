@@ -25,12 +25,32 @@
     border-radius: 4px 4px 0% 0%;
     margin-right: 3px;
     text-align: center;
+    cursor: pointer;
+}
+
+.rc-cerrarventana {
+    width: 1rem;
+    font-size: 0.7rem;
+    vertical-align: text-top;
+    height: 1rem;
+    font-family: Icons;
+    float: right;
+}
+
+.rc-cerrarventana:hover {
+    background-color: #ABABAB;
+}
+
+.rc-content {
+    display: flex;
+    flex-direction: row;
 }
 /*_____________________________________________*/
 .page {
     position: relative;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 main {
@@ -65,13 +85,13 @@ main {
 }
 
 @media (min-width: 641px) {
-    .page {
+    .rc-content {
         flex-direction: row;
     }
 
     .sidebar {
         width: 250px;
-        height: 100vh;
+        height: 97vh;
         position: sticky;
         top: 0;
     }

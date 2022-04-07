@@ -1,41 +1,60 @@
 ﻿@inherits LayoutComponentBase
 @inject IJSRuntime JsRuntime
 @inject PaginaActual paginaActual
+@inject PaginasAbiertas paginasAbiertas
 
-<div class ="rc-header"> 
+<div class="page">     
+    <div class ="rc-header"> 
         <img class="rc-logo" src="images/ComerciaGoldLogo.PNG" alt="Logo"/>
         <div class="rc-user">
             Efrain Girón Romero
             <button type="button" class="btn btn-secondary btn-sm">Cerrar Sesión</button>
         </div>
-</div>
-
-<div class="page">       
-    <div class="sidebar">
-        <NavMenu/>
     </div>
-    <div id="resizer" class="rc-resizercontent"></div> <!--onclick="Resize"-->
-    <main>
-        <div class="top-row">                                    
-            @if (paginaActual.NombrePaginaActual != null)
-            {
-                <a class="rc-pestana" href="@paginaActual.NombrePaginaActual" target="_blank">@paginaActual.NombrePaginaActual</a>
-            }
+    <div class="rc-content">
+        <div class="sidebar">
+        <NavMenu/>
         </div>
-
-        <article class="content px-4">
-            <DynamicComponent Type="paginaActual.TypePaginaActual"/>
-        </article>
-    </main>
+        <div id="resizer" class="rc-resizercontent"></div> <!--onclick="Resize"-->
+        <main>
+            <div class="top-row">                                    
+                @foreach (var pagina in paginasAbiertas.Paginas)
+                {
+                    <div @onclick="() => cambiarPestaña(pagina)" class="rc-pestana">
+                        @pagina.Nombre
+                        <span class="rc-cerrarventana oi-x" style="@("display:" + (pagina.Numero == 1 ? "none": "inherit"))" @onclick="() => CerrarVentana(pagina)"></span>
+                    </div>
+                }            
+            </div>
+            <article class="content px-4">
+                @foreach (var pagina in paginasAbiertas.Paginas)
+                {                                
+                    <div style="@("display:" + (pagina.Numero != paginaActual.Numero ? "none;" :"block;"))">
+                        <DynamicComponent Type="pagina.Tipo" Parameters="@(new Dictionary<string, object>{{"currentCount", 5}})"/> 
+                    </div>                
+                }
+            </article>
+        </main>
+    </div>    
 </div>
 
-@code {    
+@code {
+
     protected override void OnInitialized()
     {                
         // if the OnChange event is raised, refresh this view
-        paginaActual.OnChange += () => StateHasChanged();
-        
-
+        paginaActual.OnChange += () => StateHasChanged();       
         base.OnInitialized();
+    }
+
+    private void cambiarPestaña(Pagina pagina)
+    {
+        paginaActual.cambiarVentana(pagina);
+    }   
+
+    private void CerrarVentana(Pagina pagina)
+    {
+        paginasAbiertas.Paginas.Remove(pagina);
+        paginaActual.cambiarVentana(paginasAbiertas.Paginas.Last());
     }
 }
