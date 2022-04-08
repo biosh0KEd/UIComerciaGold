@@ -136,15 +136,135 @@
                 </div>
             </li>
             <li class="px-3">
-                <div class="rc-folder">
+                <div class="rc-folder" @onclick="ToggleNavCompras">
                     <span class="oi oi-plus"></span>
                     <span class="oi oi-folder" aria-hidden="true"></span> Compras
+                </div>
+                <div class="@navCompras">
+                    <ul class="navbar-nav">
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Órdenes de Compra
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-document">  
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Compras
+                                </div>                                
+                                <span class="oi oi-plus"></span>
+                            </div>                            
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-document">                                          
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Devoluciones Proveedor
+                                </div>                                
+                                <span class="oi oi-plus"></span>
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-document">                                    
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Pagos o Abonos Proveedor
+                                </div>
+                                <span class="oi oi-plus"></span>
+                            </div>                            
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-document">        
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Ajustes Cargos(-)
+                                </div>                                
+                                <span class="oi oi-plus"></span>
+                            </div>                            
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-document">                                                                
+                                <div>
+                                   <span class="oi oi-document" aria-hidden="true"></span> Ajustes Abonos(+)
+                                </div>                                
+                                <span class="oi oi-plus"></span>
+                            </div>                            
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">  
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Reportes Compras
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Consignaciones de Prov
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Estadísticas Compras
+                            </div>
+                        </li>                                                
+                    </ul>
                 </div>
             </li>
             <li class="px-3">
                 <div class="rc-folder">
                     <span class="oi oi-plus"></span>
                     <span class="oi oi-folder" aria-hidden="true"></span> Inventarios
+                </div>
+                <div class="@navCompras">
+                    <ul class="navbar-nav">
+                        <li class="px-3">
+                            <div class="rc-document">  
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Entradas
+                                </div>                                
+                                <span class="oi oi-plus"></span>
+                            </div>                            
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-document">                                          
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Salidas
+                                </div>                                
+                                <span class="oi oi-plus"></span>
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Traspasos
+                            </div>
+                        </li>                        
+                        <li class="px-3">
+                            <div class="rc-document">                                    
+                                <div>
+                                    <span class="oi oi-document" aria-hidden="true"></span> Reportes Inventrarios
+                                </div>
+                                <span class="oi oi-plus"></span>
+                            </div>                            
+                        </li>                        
+                        <li class="px-3">
+                            <div class="rc-folder">  
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Inventario Físico
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Solicitudes
+                            </div>
+                        </li>
+                        <li class="px-3">
+                            <div class="rc-folder">
+                                <span class="oi oi-plus"></span>
+                                <span class="oi oi-folder" aria-hidden="true"></span> Estadísticas Inventar
+                            </div>
+                        </li>                                                
+                    </ul>
                 </div>
             </li>
             <li class="px-3">
@@ -221,11 +341,10 @@
     public static string counter = "Counter";
     public static string home = "Home";
 
-    private bool collapseNavMenu = true, collapseNavVentas = true;
-
+    private bool collapseNavMenu = true, collapseNavVentas = true, collapseNavCompras = true;
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
     private string? navVentas => collapseNavVentas ? "collapse" : null;
+    private string? navCompras => collapseNavCompras ? "collapse" : null;
 
     private void ToggleNavMenu()
     {
@@ -235,6 +354,11 @@
     private void ToggleNavVentas()
     {
         collapseNavVentas = !collapseNavVentas;
+    }
+
+    private void ToggleNavCompras()
+    {
+        collapseNavCompras = !collapseNavCompras;
     }
 
     private void setCounter(string name) 
