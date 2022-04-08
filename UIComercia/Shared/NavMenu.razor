@@ -241,5 +241,6 @@
     {
         paginaActual.CrearNuevaPagina(name);
         paginasAbiertas.Paginas.Add(paginaActual.GetPagina());
+        paginasAbiertas.DeclararEstadoInicialCounter(paginaActual.GetPagina().Numero);
     }
 }

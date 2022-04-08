@@ -27,12 +27,7 @@
                 }            
             </div>
             <article class="content px-4">
-                @foreach (var pagina in paginasAbiertas.Paginas)
-                {                                
-                    <div style="@("display:" + (pagina.Numero != paginaActual.Numero ? "none;" :"block;"))">
-                        <DynamicComponent Type="pagina.Tipo" Parameters="@(new Dictionary<string, object>{{"currentCount", 5}})"/> 
-                    </div>                
-                }
+                <DynamicComponent Type="paginaActual.TypePaginaActual" Parameters="@(new Dictionary<string, object>{{"NumeroDePagina", paginaActual.Numero}})"/> 
             </article>
         </main>
     </div>    
@@ -56,5 +51,6 @@
     {
         paginasAbiertas.Paginas.Remove(pagina);
         paginaActual.cambiarVentana(paginasAbiertas.Paginas.Last());
+        paginasAbiertas.Estado.Remove(pagina.Numero);
     }
 }

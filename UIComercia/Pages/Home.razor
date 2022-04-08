@@ -1,5 +1,6 @@
 ﻿@page "/Home"
 @inject PaginaActual paginaActual
+@inject PaginasAbiertas paginasAbiertas
 
 <PageTitle>Home</PageTitle>
 
@@ -9,17 +10,19 @@ Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
 
-<p role="status">Current count: @currentCount</p>
+<p role="status">Current count: @paginasAbiertas.Estado[NumeroDePagina]["currentCount"]</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 
 @code {
-    private int currentCount;
+    [Parameter]
+    public int NumeroDePagina { get; set; }
+
 
     private void IncrementCount()
     {
-        currentCount++;
+        paginasAbiertas.Estado[NumeroDePagina]["currentCount"] = Convert.ToInt32(paginasAbiertas.Estado[NumeroDePagina]["currentCount"]) + 1;
     }
 	
 }
