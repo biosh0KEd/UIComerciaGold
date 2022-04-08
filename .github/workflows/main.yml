@@ -20,10 +20,14 @@ jobs:
 
     - name: Publish application
       run: dotnet publish -c Release
-    
+        
     # base href url value should be changed so that resources like CSS and scripts can load properly. 
-    - name: Change base-tag in index.html from / to UIComerciaGold
-      run: sed -i 's/<base href="\/" \/>/<base href="\/UIComerciaGold\/" \/>/g' Release/net6.0/wwwroot/index.html
+    - name: Rewrite base href
+      if: success()
+      uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
+      with:
+        html_path: /home/runner/work/UIComerciaGold/UIComerciaGold/UIComercia/bin/Release/net6.0/publish/index.html
+        base_href: UIComerciaGold
         
     # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
     - name: Add .nojekyll file
